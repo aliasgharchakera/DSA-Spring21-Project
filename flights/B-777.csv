@@ -1,0 +1,7 @@
+,Karachi,Islamabad,Lahore,Quetta,Pindi,Hyd
+Karachi,0,"('22:15', 'Monday', 150)","('16:30', 'Friday', 60)","('19:45', 'Friday', 120)","('10:45', 'Saturday', 270)","('21:30', 'Sunday', 240)"
+Islamabad,-1,0,-1,-1,-1,"('20:15', 'Tuesday', 60)"
+Lahore,"('06:00', 'Saturday', 225)",-1,0,-1,"('07:30', 'Sunday', 285)","('01:45', 'Monday', 255)"
+Quetta,-1,-1,-1,0,-1,"('04:30', 'Sunday', 180)"
+Pindi,-1,"('03:30', 'Wednesday', 285)",-1,"('07:45', 'Wednesday', 195)",0,-1
+Hyd,-1,"('15:30', 'Thursday', 75)",-1,-1,-1,0
