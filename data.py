@@ -26,7 +26,7 @@ print(main())
 city = ["Karachi", "Islamabad", "Lahore", "Quetta", "Pindi", "Hyd"]
 flights = ["A-350", "A-220", "B-737", "B-747", "B-777"]
 for i in range(len(flights)):
-    name = 'c:/Users/alias/OneDrive - Habib University/Semester 2/DSA/Project/flights/' + flights[i] + ".csv"
+    name = 'c:/Users/alias/OneDrive - Habib University/Semester 2/DSA/Project/GitHub/Final-Project/flights/' + flights[i] + ".csv"
     with open(name, 'w', newline='') as file:
         writer = csv.writer(file)
         writer.writerow(["", "Karachi", "Islamabad", "Lahore", "Quetta", "Pindi", "Hyd"])
