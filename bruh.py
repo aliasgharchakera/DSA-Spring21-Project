@@ -3,19 +3,35 @@ import csv
 all_flights = {}
 all_routes = []
 
-def binary_search(arr, col, x):
-    low = 0
-    high = len(arr) - 1
-    mid = 0
-    while low <= high: 
-        mid = (high + low) // 2
-        if arr[mid][col] < x:
-            low = mid + 1
-        elif arr[mid][col] > x:
-            high = mid - 1
-        else:
-            return mid
-    return -1
+def merge_sort(lst, ascending = True):
+    if len(lst) > 1:
+        mid = len(lst)//2
+        left = lst[:mid]
+        right = lst[mid:]
+        merge_sort(left)
+        merge_sort(right)
+        x = y = z = 0
+        while x < len(left) and y < len(right):
+            if left[x] < right[y]:
+                lst[z] = left[x]
+                x += 1
+            else:
+                lst[z] = right[y]
+                y += 1
+            z += 1
+        while x < len(left):
+            lst[z] = left[x]
+            x += 1
+            z += 1
+        while y < len(right):
+            lst[z] = right[y]
+            y += 1
+            z += 1
+    if ascending:
+        pass
+    else:
+        lst = lst[::-1]
+    return lst
 
 def addNodes(G,nodes):
     for i in nodes:
@@ -28,7 +44,7 @@ def addEdges(G,edge_list):
     return G
 
 def data_structure(file_name):
-    f = open('c:/Users/alias/OneDrive - Habib University/Semester 2/DSA/Project/flights/' + file_name + '.csv', 'rt')
+    f = open('c:/Users/alias/OneDrive - Habib University/Semester 2/DSA/Project/Github/Final-Project/flights/' + file_name + '.csv', 'rt')
     plane = csv.reader(f)
     iteration = 0
     node_list = []
@@ -131,7 +147,7 @@ def shortest_distance(G, start, end):
         if route:
             shortest.append((route, flights[i]))
     #print(shortest)
-    shortest = sorted(shortest)
+    shortest = merge_sort(shortest)
     return shortest[0]
 
 def intptr_shortest_distance(G, start, end):
@@ -232,7 +248,7 @@ def main():
             else:
                 print("{}. {}".format(code, city))
         dest = int(input())
-        print("1. Search by quickest flight\n2. Search by day\n3. Search by flight")
+        print("1. Search by quickest flight\n2. Search by day\n3. Search by flight\n4. Show all flights available")
         k = int(input())
         if k == 1:
             intptr_shortest_distance(all_flights, cities[origin], cities[dest])
@@ -248,6 +264,8 @@ def main():
                 print("{}. {}".format(code, flight))
             flight = int(input())
             get_flight(all_flights, flights[flight], cities[origin], cities[dest])
+        elif k == 4:
+            flight_schedule(all_flights, cities[origin], cities[dest])
     elif i == 2:
         print("Choose the day for which you would like to generate a schedule: ")
         for code, day in week.items():
