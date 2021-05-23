@@ -43,8 +43,9 @@ def addEdges(G,edge_list):
         G[i[0]].append((i[1],i[2]))
     return G
 
+#takes the flight name as a parameter and reads the corresponding csv file and adds it to the data structure
 def data_structure(file_name):
-    f = open('c:/Users/alias/OneDrive - Habib University/Semester 2/DSA/Project/Github/Final-Project/flights/' + file_name + '.csv', 'rt')
+    f = open('flights/' + file_name + '.csv', 'rt')
     plane = csv.reader(f)
     iteration = 0
     node_list = []
@@ -64,10 +65,7 @@ def data_structure(file_name):
                 if j not in node_list:
                     if j != '0' and j != '-1':
                         j = j.strip('()')
-                        #j = j.strip("''''")
-                        #print(j)
                         list_j = j.split(", ")
-                        #print(list_j)
                         edge_list.append((temp_org, node_list[iteration2 - 1], int(list_j[2])))
                         all_flights[file_name].append((temp_org, node_list[iteration2-1], list_j[0], list_j[1]))
                 else:
@@ -79,7 +77,7 @@ def data_structure(file_name):
     addNodes(G, node_list)
     addEdges(G, edge_list)
     return G
-
+#calling data_structure to append each dictionary to the all_routes list
 all_routes.append(data_structure('A-220'))
 all_routes.append(data_structure('A-350'))
 all_routes.append(data_structure('B-737'))
@@ -87,7 +85,7 @@ all_routes.append(data_structure('B-747'))
 all_routes.append(data_structure('B-777'))
 #print(all_flights)
 #print(all_routes)
-
+#finding the fastest path between 2 locations
 def dijkstra(G, start, end):
     shortest_distance = {}
     DaWay = {}
@@ -120,6 +118,7 @@ def dijkstra(G, start, end):
     if shortest_distance[end]!=9999999:
         return shortest_distance[end],track_DaWay
 #print(dijkstra(all_routes[4], "Karachi", "Lahore"))
+#finds the quickest flight between 2 locations using dijkstra algoritm
 def shortest_distance(G, start, end):
     shortest = []
     flights = {0: "A-350", 1: "A-220", 2: "B-737", 3: "B-747", 4: "B-777"}
@@ -131,7 +130,7 @@ def shortest_distance(G, start, end):
     #print(shortest)
     shortest = merge_sort(shortest)
     return shortest[0]
-
+#inteprets the quickest flight and outputs in the desired manner
 def intptr_shortest_distance(G, start, end):
     x = shortest_distance(G, start, end)
     time = x[0][0]
@@ -142,7 +141,7 @@ def intptr_shortest_distance(G, start, end):
     dest = x[0][1][0][1]
     flight = x[1]
     print("The fastest flight from {} to {} is {} which takes {}".format(origin, dest, flight, time))
-
+#prints the flight schedule for the day
 def print_schedule(G, day):
     flights = []
     paths = []
@@ -158,7 +157,7 @@ def print_schedule(G, day):
     else:
         string = "No flights are available on {}\n".format(day)
     print(string[:-1])
-
+#finds and prints the flight between two locations on a specific day
 def flight_finder(G, start, end, day):
     flights = []
     for key, item in G.items():
@@ -172,7 +171,7 @@ def flight_finder(G, start, end, day):
     else:   
         string = "No flights are available from {} to {} on {}\n".format(start, end, day)
     print(string[:-1])
-
+#prints the flight schedule between two locations
 def flight_schedule(G, start, end):
     flights = []
     week = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
@@ -187,10 +186,8 @@ def flight_schedule(G, start, end):
             if j[2][1:-1] == day:
                 string += "{} at {} | ".format(j[0], j[1][1:-1])
     print(string)
-
+#checks if a certain flight flies between 2 locations
 def is_flight(G, flight, start, end):
-    flights = []
-    week = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
     for key, item in G.items():
         if key == flight:
             for k in item:
@@ -216,9 +213,6 @@ def main():
     print("1. Search \n2. Print Schedule")
     i = int(input())
     if i == 1:
-        #print("How do you want to search:")
-        #print("1. Search by Origin to Destination\n2. Search by flight\n3. Quickest flight")
-        #j = int(input())
         print("Please choose your origin: \n")
         for code, city in cities.items():
             print("{}. {}".format(code, city))
