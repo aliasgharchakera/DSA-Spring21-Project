@@ -87,24 +87,6 @@ all_routes.append(data_structure('B-747'))
 all_routes.append(data_structure('B-777'))
 #print(all_flights)
 #print(all_routes)
-def find_direct_flight(G, start, end, day = None):
-    flight_lst = []
-    flights = {'0': "A-220", '1': "A-350", '2': "B-737", '3': "B-747", '4': "B-777"}
-    lst_values = list(G.values())
-    for key, value in G.items():
-        for j in value:
-            if day:
-                if j[0] == start and j[1] == end and j[3] == ("'" + day + "'"):
-                    #print(j[3])
-                    flight_lst.append([key, j])
-            else:   
-                if j[0] == start and j[1] == end:
-                    flight_lst.append([key, j])
-    if flight_lst:
-        return flight_lst
-    else:
-        return "Sorry no flights are available from {} to {} on {}".format(start, end, day)
-#print(find_direct_flight(all_flights, "Karachi", "Lahore", "Saturday"))
 
 def dijkstra(G, start, end):
     shortest_distance = {}
@@ -161,25 +143,25 @@ def intptr_shortest_distance(G, start, end):
     flight = x[1]
     print("The fastest flight from {} to {} is {} which takes {}".format(origin, dest, flight, time))
 
-def print_flights(all_flights, value):
+def print_schedule(G, day):
     flights = []
     paths = []
-    for key, item in all_flights.items():
+    for key, item in G.items():
         for k in item:
-            if k[3][1:-1] == value:
+            if k[3][1:-1] == day:
                 flights.append(key)
                 paths.append(k)
     if flights:
-        string = "The following flights are available on {}\n".format(value)
+        string = "The following flights are available on {}\n".format(day)
         for i in range(len(paths)):
             string += "{}: From {} to {} at {}\n".format(flights[i], paths[i][0], paths[i][1], paths[i][2][1:-1])
     else:
-        string = "No flights are available on {}\n".format(value)
+        string = "No flights are available on {}\n".format(day)
     print(string[:-1])
 
-def flight_finder(all_flights, start, end, day):
+def flight_finder(G, start, end, day):
     flights = []
-    for key, item in all_flights.items():
+    for key, item in G.items():
         for k in item:
             if k[0] == start and k[1] == end and k[3][1:-1] == day:
                 flights.append((key, k[2]))
@@ -191,10 +173,10 @@ def flight_finder(all_flights, start, end, day):
         string = "No flights are available from {} to {} on {}\n".format(start, end, day)
     print(string[:-1])
 
-def flight_schedule(all_flights, start, end):
+def flight_schedule(G, start, end):
     flights = []
     week = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-    for key, item in all_flights.items():
+    for key, item in G.items():
         for k in item:
             if k[0] == start and k[1] == end:
                 flights.append((key, k[2], k[3]))
@@ -206,10 +188,10 @@ def flight_schedule(all_flights, start, end):
                 string += "{} at {} | ".format(j[0], j[1][1:-1])
     print(string)
 
-def get_flight(all_flights, flight, start, end):
+def is_flight(G, flight, start, end):
     flights = []
     week = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-    for key, item in all_flights.items():
+    for key, item in G.items():
         if key == flight:
             for k in item:
                 if k[0] == start and k[1] == end:
@@ -229,7 +211,7 @@ def main():
     cities = {1: "Karachi", 2: "Islamabad", 3: "Lahore", 4: "Quetta", 5: "Pindi", 6: "Hyd"}
     week = {1: "Monday", 2: "Tuesday", 3: "Wednesday", 4: "Thursday", 5: "Friday", 6: "Saturday", 7: "Sunday"}
     flights = {1: "A-350", 2: "A-220", 3: "B-737", 4: "B-747", 5: "B-777"}
-    print("WELCOME TO THE ADA")
+    print("WELCOME TO THE ADA ")
     print("What would you like to do to:")
     print("1. Search \n2. Print Schedule")
     i = int(input())
@@ -263,7 +245,7 @@ def main():
             for code, flight in flights.items():
                 print("{}. {}".format(code, flight))
             flight = int(input())
-            get_flight(all_flights, flights[flight], cities[origin], cities[dest])
+            is_flight(all_flights, flights[flight], cities[origin], cities[dest])
         elif k == 4:
             flight_schedule(all_flights, cities[origin], cities[dest])
     elif i == 2:
@@ -271,13 +253,5 @@ def main():
         for code, day in week.items():
             print("{}. {}".format(code, day))
         l = int(input())
-        print_flights(all_flights, week[l])
-    #for j in cities.items():
-    #    print(j, end="")
-    #print()
-    #for k in week.items():
-    #    print(k, end="")
-    #print()
-    #functions = {1: find_direct_flight(all_flights, cities[int(input("From: "))], cities[int(input("To: "))], week[(input("Day"))])}
-    #print(functions[i])
+        print_schedule(all_flights, week[l])
 main()
