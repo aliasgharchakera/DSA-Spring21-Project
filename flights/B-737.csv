@@ -1,7 +1,7 @@
-,Karachi,Islamabad,Lahore,Quetta,Pindi,Hyd
-Karachi,0,-1,-1,"('21:15', 'Saturday', 195)","('05:30', 'Saturday', 270)","('18:30', 'Saturday', 135)"
-Islamabad,"('06:00', 'Friday', 270)",0,"('02:45', 'Wednesday', 135)","('08:45', 'Friday', 165)",-1,-1
-Lahore,-1,"('06:15', 'Wednesday', 75)",0,"('13:15', 'Friday', 225)","('22:15', 'Sunday', 105)","('20:30', 'Friday', 195)"
-Quetta,"('20:00', 'Friday', 60)",-1,"('14:15', 'Thursday', 135)",0,"('09:00', 'Friday', 210)",-1
-Pindi,-1,"('07:45', 'Tuesday', 150)","('04:15', 'Thursday', 90)","('18:15', 'Friday', 195)",0,-1
-Hyd,"('19:45', 'Monday', 270)","('05:30', 'Monday', 195)","('14:15', 'Saturday', 225)","('11:15', 'Saturday', 105)",-1,0
+,Karachi,Islamabad,Lahore,Quetta,Rawal-Pindi,Hyderabad
+Karachi,0,-1,-1,-1,"('23:00', 'Sunday', 150)","('12:45', 'Thursday', 60)"
+Islamabad,-1,0,-1,"('22:30', 'Tuesday', 195)","('08:00', 'Thursday', 270)",-1
+Lahore,"('23:00', 'Thursday', 135)",-1,0,"('14:00', 'Saturday', 210)","('03:30', 'Sunday', 225)",-1
+Quetta,-1,"('04:00', 'Monday', 60)",-1,0,"('13:30', 'Saturday', 270)",-1
+Rawal-Pindi,-1,-1,"('06:00', 'Monday', 240)","('14:15', 'Friday', 270)",0,"('06:30', 'Thursday', 165)"
+Hyderabad,-1,-1,-1,-1,"('08:30', 'Thursday', 270)",0

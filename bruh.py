@@ -205,7 +205,7 @@ def is_flight(G, flight, start, end):
 #intptr_shortest_distance(all_routes, "Islamabad", "Karachi")
 
 def main():
-    cities = {1: "Karachi", 2: "Islamabad", 3: "Lahore", 4: "Quetta", 5: "Pindi", 6: "Hyd"}
+    cities = {1: "Karachi", 2: "Islamabad", 3: "Lahore", 4: "Quetta", 5: "Rawal-Pindi", 6: "Hyderabad"}
     week = {1: "Monday", 2: "Tuesday", 3: "Wednesday", 4: "Thursday", 5: "Friday", 6: "Saturday", 7: "Sunday"}
     flights = {1: "A-350", 2: "A-220", 3: "B-737", 4: "B-747", 5: "B-777"}
     print("WELCOME TO THE ADA ")

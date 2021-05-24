@@ -23,13 +23,13 @@ def choice():
 #print(create_time())
 #print(create_day())
 print(main())
-city = ["Karachi", "Islamabad", "Lahore", "Quetta", "Pindi", "Hyd"]
+city = ["Karachi", "Islamabad", "Lahore", "Quetta", "Rawal-Pindi", "Hyderabad"]
 flights = ["A-350", "A-220", "B-737", "B-747", "B-777"]
 for i in range(len(flights)):
     name = 'flights/' + flights[i] + ".csv"
     with open(name, 'w', newline='') as file:
         writer = csv.writer(file)
-        writer.writerow(["", "Karachi", "Islamabad", "Lahore", "Quetta", "Pindi", "Hyd"])
+        writer.writerow(["", "Karachi", "Islamabad", "Lahore", "Quetta", "Rawal-Pindi", "Hyderabad"])
         for i in range(len(city)):
             row = [city[i], choice(), choice(), choice(), choice(), choice(), choice()]
             row[i + 1] = 0
@@ -37,7 +37,7 @@ for i in range(len(flights)):
 #name = 'c:/Users/alias/OneDrive - Habib University/Semester 2/DSA/Project/flights/time.csv'
 #with open(name, 'w', newline='') as file:
 #    writer = csv.writer(file)
-#    writer.writerow(["", "Karachi", "Islamabad", "Lahore", "Quetta", "Pindi", "Hyd"])
+#    writer.writerow(["", "Karachi", "Islamabad", "Lahore", "Quetta", "Rawal-Pindi", "Hyderabad"])
 #    for i in range(len(city)):
 #        row = [city[i], time_taken(), time_taken(), time_taken(), time_taken(), time_taken(), time_taken()]
 #        row[i + 1] = 0
