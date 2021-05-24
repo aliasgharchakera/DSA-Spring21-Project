@@ -199,8 +199,8 @@ def is_flight(G, flight, start, end):
         string = "The {} does not fly from {} to {}".format(flight, start, end)
     print(string)
 #get_flight(all_flights, "B-747", "Islamabad", "Karachi")
-#flight_schedule(all_flights, "Karachi", "Pindi")
-#flight_finder(all_flights, "Islamabad", "Hyd", "Tuesday")
+#flight_schedule(all_flights, "Karachi", "Rawal-Pindi")
+#flight_finder(all_flights, "Islamabad", "Hyderabad", "Tuesday")
 #print_flights(all_flights, "Tuesday")
 #intptr_shortest_distance(all_routes, "Islamabad", "Karachi")
 
@@ -208,7 +208,7 @@ def main():
     cities = {1: "Karachi", 2: "Islamabad", 3: "Lahore", 4: "Quetta", 5: "Rawal-Pindi", 6: "Hyderabad"}
     week = {1: "Monday", 2: "Tuesday", 3: "Wednesday", 4: "Thursday", 5: "Friday", 6: "Saturday", 7: "Sunday"}
     flights = {1: "A-350", 2: "A-220", 3: "B-737", 4: "B-747", 5: "B-777"}
-    print("WELCOME TO THE ADA ")
+    print("-----WELCOME TO THE ADA FLIGHT SEARCH ENGINE-----")
     print("What would you like to do to:")
     print("1. Search \n2. Print Schedule")
     i = int(input())
@@ -248,4 +248,5 @@ def main():
             print("{}. {}".format(code, day))
         l = int(input())
         print_schedule(all_flights, week[l])
+    print("-----THANK YOU FOR VISITING ADA FLIGHT SEARCH ENGINE-----")
 main()
